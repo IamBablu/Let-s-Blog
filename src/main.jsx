@@ -1,4 +1,3 @@
-import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
@@ -6,7 +5,7 @@ import { Provider } from 'react-redux'
 import store from './store/Store.js'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import { AddPost, AllPost, EditPost, Home, Login, Post, Signup } from './components/pages'
-import { authLayout } from './components/index.js'
+import { AuthLayout } from './components'
 
 const router = createBrowserRouter([
   {
@@ -20,44 +19,44 @@ const router = createBrowserRouter([
       {
         path: '/login',
         element: (
-          <authLayout authentication = {false}>
+          <AuthLayout authentication = {false}>
             <Login />
-          </authLayout>
+          </AuthLayout>
         )
       },
       {
         path: '/signup',
         element: (
-          <authLayout authentication = {false}>
+          <AuthLayout authentication = {false}>
             <Signup />
-          </authLayout>
+          </AuthLayout>
         )
       },
       {
         path: '/add-posts',
         element: (
-          <authLayout authentication>
+          <AuthLayout authentication>
             {" "}
             <AddPost />
-          </authLayout>
+          </AuthLayout>
         )
       },
       {
         path: '/all-posts',
         element: (
-          <authLayout authentication = {false}>
+          <AuthLayout authentication = {false}>
             {" "}
             <AllPost />
-          </authLayout>
+          </AuthLayout>
         )
       },
       {
         path: '/edit-post/:slug',
         element: (
-          <authLayout authentication = {false}>
+          <AuthLayout authentication = {false}>
             {" "}
             <EditPost />
-          </authLayout>
+          </AuthLayout>
         )
       },
       {
@@ -69,9 +68,7 @@ const router = createBrowserRouter([
 ])
 
 createRoot(document.getElementById('root')).render(
-  <StrictMode>
     <Provider store={store}>
     <RouterProvider router={router} />
-    </Provider>
-  </StrictMode>,
+    </Provider>,
 )
